@@ -1,0 +1,7 @@
+{
+  "name": "metin2_maintenance_reminder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lucassodresa <lucas.sodresa@gmail.com>",
+  "license": "MIT"
+}
