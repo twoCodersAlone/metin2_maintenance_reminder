@@ -8,7 +8,7 @@ const Maintenance = database.define("maintenance", {
     primaryKey: true,
   },
   message: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
   },
   post_date: {
     type: Sequelize.DATE,
