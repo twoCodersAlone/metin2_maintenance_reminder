@@ -1,6 +1,9 @@
 require("dotenv").config();
 const discord = require("./discord");
 const db = require("./db");
+const cheerio = require('cheerio');
+const axios = require('./axios');
+
 
 /* ## DISCORD ## 
 const channelID = "897251823264595979";
@@ -17,13 +20,34 @@ discord.sendMessage(client, channelID, "message");
 (async () => {
   await db.init();
 
-  //   await db.createMaintenance({
-  //     id: "post431247",
-  //     message: "muita ,messages, server down 333",
-  //     post_date: "2022-01-25 22:26:43.787 +00:00",
-  //     link: "https://google.com",
-  //     page: 20,
-  //   });
+    let count = 1
+
+    while (count <= 30) {
+        const {data} = await axios.get(`/index.php?thread/7228-registos-de-manutenções/&pageNo=${count}`);
+        // console.log(data);
+        const $ = cheerio.load(data);
+        const maint = $('.messageList>li[id]')
+        const page = Number($('.paginationTop li.active>span:first-child').text())
+        // console.log(maint)
+        maint.each( async (index, post) => {
+            const regex = /\[(?<=\[)icon=.*?\]|\[\/(?<=\/)icon\]/g
+            const postLi = $(post)
+            const postID = postLi.attr('id')
+            const link = postLi.children('article').attr('itemid')
+            const postDate = postLi.find('time.datetime').attr('datetime')
+            const message = postLi.find('div.messageText').text().replace(regex, "").trim();
+            // console.log(postID, link, postDate, message, page)
+            await db.createMaintenance({
+                id: postID,
+                message: message,
+                post_date: postDate,
+                link: link,
+                page: page,
+            });
+        })
+
+        count++
+    }
 
   const result = await db.selectMostRecentPost();
 
