@@ -27,13 +27,12 @@ const execute = async () => {
 };
 
 
-const job = cron.schedule('*/15 * * * * *', () => {
+cron.schedule('*/15 * * * * *', () => {
   const client = discord.login(process.env.BOT_TOKEN);
 
   client.on("ready", async () => {
-    await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO' )
+    await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO')
     client.destroy();
   });
-  job.stop();
 });
 
