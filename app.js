@@ -2,6 +2,7 @@ require("dotenv").config();
 const db = require("./db");
 const scraper = require("./scraper");
 const discord = require("./discord");
+const cron = require('node-cron');
 
 const execute = async () => {
   await db.init();
@@ -25,9 +26,14 @@ const execute = async () => {
   }
 };
 
-const client = discord.login(process.env.BOT_TOKEN);
 
-client.on("ready", async () => {
-  await execute();
-  client.destroy();
+const job = cron.schedule('*/15 * * * * *', () => {
+  const client = discord.login(process.env.BOT_TOKEN);
+
+  client.on("ready", async () => {
+    await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO' )
+    client.destroy();
+  });
+  job.stop();
 });
+
