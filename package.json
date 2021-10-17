@@ -5,7 +5,8 @@
   "author": "lucassodresa <lucas.sodresa@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "pm2 start app.js"
   },
   "dependencies": {
     "axios": "^0.23.0",
