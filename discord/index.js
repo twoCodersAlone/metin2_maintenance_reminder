@@ -7,9 +7,12 @@ exports.login = (token) => {
 };
 
 exports.sendMessage = (client, channelID, message) => {
-  client.on("ready", () => {
+  client.on("ready", async () => {
     const channel = client.channels.cache.get(channelID);
 
-    channel.send(message);
-  });
+    await channel.send(message);
+    client.destroy();
+  });  
 };
+
+exports.CHANNEL_LUCAS_ID = "899087480630960148";
