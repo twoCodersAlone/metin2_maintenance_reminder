@@ -37,7 +37,4 @@ exports.createBulkMaintenance = async (client, maintenanceListScraped) => {
   for await (const maintenance of maintenanceListScraped) {
     await this.createMaintenance(client, maintenance);
   }
-  //   maintenanceListScraped.forEach(async (maintenance) => {
-  //     await this.createMaintenance(client, maintenance);
-  //   });
 };
