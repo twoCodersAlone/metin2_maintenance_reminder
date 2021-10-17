@@ -27,12 +27,20 @@ const execute = async () => {
 };
 
 
-cron.schedule('*/15 * * * * *', () => {
+// cron.schedule('*/5 * * * * *', () => {
+//   const client = discord.login(process.env.BOT_TOKEN);
+
+//   client.on("ready", async () => {
+//     await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO')
+//     client.destroy();
+//   });
+// });
+
+setInterval( () => {
   const client = discord.login(process.env.BOT_TOKEN);
 
   client.on("ready", async () => {
     await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO')
     client.destroy();
   });
-});
-
+}, 1000 * 15);
