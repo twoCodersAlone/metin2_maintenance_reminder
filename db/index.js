@@ -13,10 +13,16 @@ exports.createMaintenance = async (
 ) => {
   const maintenance = await Maintenance.findByPk(id);
 
+  const embedMessage = discord.generateEmbedMessage({
+    message,
+    link,
+    post_date,
+  });
+
   if (!maintenance) {
     await Promise.all([
       Maintenance.create({ id, message, post_date, link, page }),
-      discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, link),
+      discord.sendEmbedMessage(client, discord.CHANNEL_LUCAS_ID, embedMessage),
     ]);
   }
 };

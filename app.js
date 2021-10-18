@@ -4,7 +4,7 @@ const scraper = require("./scraper");
 const discord = require("./discord");
 const cron = require("node-cron");
 
-const execute = async () => {
+const execute = async (client) => {
   await db.init();
 
   const maintenances = await db.selectMostRecentPost();
@@ -26,24 +26,11 @@ const execute = async () => {
   }
 };
 
-cron.schedule("0 */30 * * * *", () => {
+cron.schedule("0 */1 * * * *", () => {
   const client = discord.login(process.env.BOT_TOKEN);
 
   client.on("ready", async () => {
-    await discord.sendMessage(
-      client,
-      discord.CHANNEL_LUCAS_ID,
-      "TESTE MEIA HORA! TESTADO"
-    );
+    await execute(client);
     client.destroy();
   });
 });
-
-// setInterval( () => {
-//   const client = discord.login(process.env.BOT_TOKEN);
-
-//   client.on("ready", async () => {
-//     await discord.sendMessage(client, discord.CHANNEL_LUCAS_ID, 'TESTE MEIA HORA! TESTADO')
-//     client.destroy();
-//   });
-// }, 1000 * 15);
