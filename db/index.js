@@ -22,7 +22,7 @@ exports.createMaintenance = async (
   if (!maintenance) {
     await Promise.all([
       Maintenance.create({ id, message, post_date, link, page }),
-      discord.sendEmbedMessage(client, discord.CHANNEL_LUCAS_ID, embedMessage),
+      discord.sendEmbedMessage(client, discord.CHANNEL_BRAVE_ID, embedMessage),
     ]);
   }
 };

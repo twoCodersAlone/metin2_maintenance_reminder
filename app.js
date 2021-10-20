@@ -26,7 +26,7 @@ const execute = async (client) => {
   }
 };
 
-cron.schedule("0 */1 * * * *", () => {
+cron.schedule("0 */30 * * * *", () => {
   const client = discord.login(process.env.BOT_TOKEN);
 
   client.on("ready", async () => {

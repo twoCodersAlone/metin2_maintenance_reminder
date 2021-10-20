@@ -33,4 +33,4 @@ exports.generateEmbedMessage = ({ post_date, link, message }) => {
   return customEmbedMessage;
 };
 
-exports.CHANNEL_LUCAS_ID = "899121770395754536";
+exports.CHANNEL_BRAVE_ID = "889232134487822366";
