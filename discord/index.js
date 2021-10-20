@@ -18,16 +18,16 @@ exports.generateEmbedMessage = ({ post_date, link, message }) => {
     .setURL(link)
     .setAuthor(
       "FoxBrave - Manutenção Metin2",
-      "https://lh4.googleusercontent.com/BwYZUli2h5bor9RFgewuenc4rLtme9pjeDBICUszTqYK7n8pFQNxCbvKrVZwNz5wLLHmsEt2XcEbRqQWDqW-=w1920-h937"
+      "https://drive.google.com/uc?id=18APeVm5ZiAd3iqPam34k_5ABuOwfFB54"
     )
-    .setDescription(message)
+    .setDescription("\n\n" + message + "\n\n")
     .setThumbnail(
-      "https://lh5.googleusercontent.com/f3dryRtQc7SojynhAQlpg9w_tiZBAes6jdKhg0Jjgp1OF2Vzh97xSO0nbqCwlz1UEJKv5ySXZu6fX86e4oK6=w1920-h937"
+      "https://drive.google.com/uc?id=1iFZD_fgiNjO7tQKt6LgQTKkz7xxACRwS"
     )
     .setTimestamp()
     .setFooter(
       "Copyright ©2021 | Powered by Hurriken",
-      "https://lh4.googleusercontent.com/BwYZUli2h5bor9RFgewuenc4rLtme9pjeDBICUszTqYK7n8pFQNxCbvKrVZwNz5wLLHmsEt2XcEbRqQWDqW-=w1920-h937"
+      "https://drive.google.com/uc?id=18APeVm5ZiAd3iqPam34k_5ABuOwfFB54"
     );
 
   return customEmbedMessage;
