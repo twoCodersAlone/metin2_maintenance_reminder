@@ -26,7 +26,7 @@ exports.generateEmbedMessage = ({ post_date, link, message }) => {
     )
     .setTimestamp()
     .setFooter(
-      "Copyright ©2021 Todos os direitos reservados | Powered by Hurriken",
+      "Copyright ©2021 | Powered by Hurriken",
       "https://lh4.googleusercontent.com/BwYZUli2h5bor9RFgewuenc4rLtme9pjeDBICUszTqYK7n8pFQNxCbvKrVZwNz5wLLHmsEt2XcEbRqQWDqW-=w1920-h937"
     );
 
